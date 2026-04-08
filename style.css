@@ -244,6 +244,12 @@ body {
   .teacher {
     height: auto;
   }
+
+  /* Gllery */
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* 500px <= 768px */
@@ -278,4 +284,10 @@ body {
   .teacher {
     height: 100vh;
   }
-}
+
+  /* Gllery */
+  .carousel-item img {
+    width: 75%;
+    height: 75%;
+  }
+} 

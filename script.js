@@ -83,15 +83,13 @@ document.addEventListener("slid.bs.carousel", function (event) {
       appear.style.opacity = "1";
     }
   };
-  console.info(lebar > 0);
 
   if (lebar > 0 && lebar < 500) {
     posisiAppear("80", "73");
   } else if (lebar > 500 && lebar < 992) {
-    console.info(lebar > 0);
     posisiAppear("86", "79");
   } else if (lebar > 992) {
-    posisiAppear("91", "87");
+    posisiAppear("66", "67");
   }
 
   appear.style.zIndex = "999999";
