@@ -1,181 +1,38 @@
-body {
-  padding-top: 0;
-  margin: 0;
-  /* scroll-padding-top: 70px; tinggi navbar */
-  /* scroll-behavior: smooth; */
-  box-sizing: border-box;
-}
-
-.anchor {
-  scroll-margin-top: 80px;
-}
-
-.anchor-2 {
-  scroll-margin-top: 55px;
-}
-
-/* Navbar */
-.navbar {
-  background-color: #00baf1;
-  border-bottom: 0px solid white !important;
-}
-
-.navbar-brand {
-  font-weight: bold;
-}
-
-.nav-link {
-  color: white;
-}
-
-.active {
-  color: white !important;
-  font-weight: bolder;
-}
-
-/* Overlay */
-.overlay {
-  background-color: rgba(0, 0, 0, 0.7); /* gelap transparan */
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  position: absolute;
-  backdrop-filter: blur(10px);
-  top: 0;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center; /* horizontal tengah */
-  opacity: 0;
-}
-
-.button-close {
-  position: absolute;
-  top: 25px;
-  right: 35px;
-  font-weight: bolder;
-  border: none;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-  z-index: 10000;
-}
-
-.button-close:hover {
-  color: red;
-}
-
-.logo-overlay {
-  width: 50%;
-  max-width: 350px; /* batas maksimal */
-  height: auto; /* biar proporsional */
-  display: block;
-  margin: 0 auto;
-}
-
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.hidden {
-  display: none;
-}
-
-/* Home */
-.home {
-  margin-top: 2rem;
-}
-.p-tag {
-  color: black;
-  transition: color 0.3s ease;
-}
-
-.p-tag:hover {
-  color: #00baf1;
-}
-
-.btn-cta {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  margin: auto;
-  background: rgb(0, 186, 241);
-  transition: all 0.3s ease;
-  color: white;
-}
-
-.btn-cta:hover {
-  background-color: rgba(0, 186, 241, 0.9) !important;
-  color: white !important;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.img-home {
-  transition: all 0.3s ease;
-}
-
-.carousel-item {
-  aspect-ratio: 2/1; /* Slide bentuk panjang */
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Gambar penuh tanpa gepeng */
-}
-.h3-slide {
-  transition: all 0.5s ease;
-  opacity: 1;
-  top: 80%;
-  left: 20%;
-  z-index: 99;
-}
-
-/* .h3-slide.appear {
-  top: 88%;
-  left: 23%;
-  z-index: 99;
-  opacity: 1;
-} */
-
-/* Location */
-.location {
-  height: 90vh;
-}
-
-/* Contact */
-.send-massege {
-  background-color: rgb(0, 186, 241);
-}
-
-.icon-contact {
-  color: #00baf1;
-}
-
-.icon-footer {
-  color: #00baf1;
-}
-
-.form-contact-input:focus {
-  border: none !important;
-  outline: none !important;
-  /* box-shadow: 5px 5px 5px 5px  rgba(0, 186, 241,.3); */
-  filter: drop-shadow(5px 5px 5px 5px rgba(0, 186, 241, 0.1));
-}
-
-#send-massege:hover {
-  background-color: #00baf1;
-}
-
-/* < 576x*/
-
+                /* < 576x*/
 @media screen and (min-width: 0px) {
+  body {
+    padding-top: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .anchor {
+    scroll-margin-top: 80px;
+  }
+
+  .anchor-2 {
+    scroll-margin-top: 55px;
+  }
+
   /* Navbar */
+  .navbar {
+    background-color: #00baf1;
+    border-bottom: 0px solid white !important;
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  .nav-link {
+    color: white;
+  }
+
+  .active {
+    color: white !important;
+    font-weight: bolder;
+  }
+
   .logo {
     position: absolute;
     top: 12%;
@@ -183,10 +40,93 @@ body {
     margin-bottom: 1rem;
   }
 
+  /* Overlay */
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* gelap transparan */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    position: absolute;
+    backdrop-filter: blur(10px);
+    top: 0;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center; /* horizontal tengah */
+    opacity: 0;
+  }
+
+  .button-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-weight: bolder;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    z-index: 10000;
+  }
+
+  .button-close:hover {
+    color: red;
+  }
+
+  .logo-overlay {
+    width: 50%;
+    max-width: 350px; /* batas maksimal */
+    height: auto; /* biar proporsional */
+    display: block;
+    margin: 0 auto;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .hidden {
+    display: none;
+  }
+
   /* Home */
+  .p-tag {
+    color: black;
+    transition: color 0.3s ease;
+  }
+
+  .p-tag:hover {
+    color: #00baf1;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: auto;
+    background: rgb(0, 186, 241);
+    transition: all 0.3s ease;
+    color: white;
+  }
+
+  .btn-cta:hover {
+    background-color: rgba(0, 186, 241, 0.9) !important;
+    color: white !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .img-home {
+    transition: all 0.3s ease;
+  }
+
   .home {
     height: auto;
     line-height: 0;
+    margin-top: 2rem;
   }
   .section-text-home {
     height: 30vh;
@@ -203,10 +143,8 @@ body {
   }
 
   .about {
-    /* padding-top:95px ; */
     background-color: rgb(0, 186, 241);
     color: white;
-    /* margin-bottom: ; */
     margin: 0;
     height: auto;
     box-sizing: border-box;
@@ -218,7 +156,6 @@ body {
 
   .img-about {
     width: 100vh;
-    /* margin: 0; */
     height: auto;
     border-radius: 0 0 50% 50%;
   }
@@ -227,11 +164,9 @@ body {
     margin: auto;
     width: 80vw;
     margin-top: 2rem;
-    /* margin-bottom: 2rem; */
   }
 
   /* Teacher */
-
   .teacher {
     height: auto;
   }
@@ -251,6 +186,43 @@ body {
   .carousel-item img {
     max-width: 100%;
     max-height: 100%;
+    object-fit: cover; /* Gambar penuh tanpa gepeng */
+  }
+
+  .h3-slide {
+    transition: all 0.5s ease;
+    opacity: 1;
+    top: 80%;
+    left: 20%;
+    z-index: 99;
+  }
+
+  /* Location */
+  .location {
+    height: 90vh;
+  }
+
+  /* Contact */
+  .send-massege {
+    background-color: rgb(0, 186, 241);
+  }
+
+  .icon-contact {
+    color: #00baf1;
+  }
+
+  .icon-footer {
+    color: #00baf1;
+  }
+
+  .form-contact-input:focus {
+    border: none !important;
+    outline: none !important;
+    filter: drop-shadow(5px 5px 5px 5px rgba(0, 186, 241, 0.1));
+  }
+
+  #send-massege:hover {
+    background-color: #00baf1;
   }
 }
 
