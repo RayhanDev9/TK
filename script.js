@@ -1,3 +1,4 @@
+// Overlay
 const btnOverlay = document.querySelector(".logo");
 const btnCloseOverlay = document.querySelector(".button-close");
 const overlay = document.querySelector(".overlay");
@@ -5,6 +6,7 @@ const overlay = document.querySelector(".overlay");
 // send Wa
 const sendWA = document.getElementById("send-massege");
 console.info(typeof Number(innerWidth) === "number");
+
 // Logo
 const navbar = document.querySelector(".navbar");
 const button = navbar.querySelector("button");
@@ -25,7 +27,7 @@ btnOverlay.addEventListener("click", function () {
   overlay.classList.remove("hidden");
   overlay.classList.add("active");
 
-    // overflow: hidden;
+    //agar tidak bisa di scroll
   document.body.style.overflow = "hidden"; // nonaktifkan scroll
   console.info("ok");
 });
@@ -33,11 +35,17 @@ btnOverlay.addEventListener("click", function () {
 btnCloseOverlay.addEventListener("click", function () {
   overlay.classList.add("hidden");
   overlay.classList.remove("active");
+
+  // Agar bisa di scroll
+  document.body.style.overflow = "";
 });
 
 //Apper
 document.addEventListener("slid.bs.carousel", function (event) {
+  // Menagkan carousel yang active saja
   const activeItem = document.querySelector(".carousel-item.active");
+
+  // Jika activeItem null,maka langsung di rturn agar tidak eroro
   if (!activeItem) return;
 
   const img = activeItem.querySelector("img");
