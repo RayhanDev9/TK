@@ -138,7 +138,7 @@ document.addEventListener("slid.bs.carousel", function (event) {
     posisiAppear("60", "16");
   }
 
-  appear.style.zIndex = "999999"; // agar di depan gambar apearnya
+  appear.style.zIndex = "2"; // agar di depan gambar apearnya
   appear.style.position = "absolute"; // Pastikan position absolute
   appear.style.transition = "opacity 0.3s ease"; // Opsional: animasi halus
 });
