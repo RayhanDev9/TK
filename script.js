@@ -4,9 +4,21 @@ const overlay = document.querySelector(".overlay");
 
 // send Wa
 const sendWA = document.getElementById("send-massege");
-
-// Apper
-// const carouselItem = [...document.querySelectorAll(".carousel-item")];
+console.info(typeof Number(innerWidth) === "number");
+// Logo
+const navbar = document.querySelector(".navbar");
+const button = navbar.querySelector("button");
+button.addEventListener("click", function () {
+  if (!button.classList.contains("collapsed")) {
+    const logo = document.querySelector(".logo");
+    logo.style.top = "4%";
+    logo.style.left = "3%";
+  } else if (button.classList.contains("collapsed")) {
+    const logo = document.querySelector(".logo");
+    logo.style.top = "12%";
+    logo.style.left = "3%";
+  }
+});
 
 //Overlay
 btnOverlay.addEventListener("click", function () {
@@ -21,18 +33,71 @@ btnCloseOverlay.addEventListener("click", function () {
 });
 
 //Apper
-document.addEventListener("slid.bs.carousel", () => {
-  document.querySelectorAll(".carousel-item").forEach((item) => {
-    let text = item.querySelector(".h3-slide");
+document.addEventListener("slid.bs.carousel", function (event) {
+  const activeItem = document.querySelector(".carousel-item.active");
+  if (!activeItem) return;
 
-    if (!text) return;
+  const img = activeItem.querySelector("img");
+  const text = activeItem.querySelector(".h3-slide");
 
-    text.classList.remove("appear");
+  if (!img || !text) return;
 
-    if (item.classList.contains("active")) {
-      text.classList.add("appear");
-    }
+  console.info("Active slide image:", img.src);
+
+  // Reset semua text
+  document.querySelectorAll(".h3-slide").forEach(function (el) {
+    el.classList.remove("appear");
+    // Reset style inline biar ga numpuk
+    el.style.top = "70";
+    el.style.left = "20";
+    el.style.opacity = "0";
   });
+
+  // Kasih appear ke yang aktif
+  text.classList.add("appear");
+
+  // Ambil ulang element yang sudah punya class appear (bisa pakai text langsung)
+  const appear = text; // karena text sudah pasti yang aktif
+  const lebar = innerWidth;
+
+  // Atur posisi berdasarkan gambar
+  const posisiAppear = function (s1, sAll) {
+    if (img.src.includes("slide-1.png")) {
+      console.info("Active slide image:", img.src);
+      appear.style.top = `${s1}%`;
+      appear.style.left = "23%";
+      appear.style.opacity = "1";
+    } else if (img.src.includes("slide-2.png")) {
+      appear.style.top = `${sAll}%`;
+      appear.style.left = "20%";
+      appear.style.opacity = "1";
+    } else if (img.src.includes("slide-3.png")) {
+      appear.style.top = `${sAll}%`;
+      appear.style.left = "20%";
+      appear.style.opacity = "1";
+    } else {
+      // Default untuk slide lain
+      appear.style.top = `${sAll}`;
+      appear.style.left = "20%";
+      appear.style.opacity = "1";
+    }
+  };
+  console.info(lebar > 0);
+
+  if (lebar > 0 && lebar < 500) {
+    posisiAppear("80", "73");
+    console.info("ok");
+  } else if (lebar > 500 && lebar > 992) {
+    posisiAppear("86", "79");
+    console.info("ok");
+  } else if (lebar > 992) {
+    posisiAppear("91", "87");
+    console.info("ok");
+  }
+
+  appear.style.zIndex = "99";
+  appear.style.position = "absolute"; // Pastikan position absolute
+  appear.style.transition = "opacity 0.3s ease"; // Opsional: animasi halus
 });
 
 // Kirim pesan ke wa
@@ -54,5 +119,5 @@ function sendToWhatsApp() {
 
 sendWA.addEventListener("click", function () {
   sendToWhatsApp();
-  console.info('ok')
+  console.info("ok");
 });
