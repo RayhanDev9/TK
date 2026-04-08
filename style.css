@@ -88,8 +88,6 @@ body {
 /* Home */
 .home {
   margin-top: 2rem;
-  /* padding-top:95px ;  */
-  /* color: #00baf1; */
 }
 .p-tag {
   color: black;
@@ -119,14 +117,6 @@ body {
 
 .img-home {
   transition: all 0.3s ease;
-}
-
-/* Gellry */
-.gallery {
-  height: 100vh;
-  /* width: 100vw; */
-  background-color: #00baf1;
-  color: white;
 }
 
 .carousel-item {
@@ -203,7 +193,8 @@ body {
   }
 
   .section-img-home {
-    height: 70vh;
+    height: auto;
+    margin-block: 6rem;
   }
   /* About */
   .h2-about {
@@ -211,7 +202,6 @@ body {
     top: 1.3rem;
   }
 
-  /* About */
   .about {
     /* padding-top:95px ; */
     background-color: rgb(0, 186, 241);
@@ -247,6 +237,13 @@ body {
   }
 
   /* Gllery */
+  .gallery {
+    height: auto;
+    padding-bottom: 2rem;
+    /* width: 100vw; */
+    background-color: #00baf1;
+    color: white;
+  }
   .carousel-item {
     aspect-ratio: 20/9; /* Slide bentuk panjang */
   }
@@ -277,6 +274,10 @@ body {
 
 /* 992px <= 1200px */
 @media screen and (min-width: 992px) {
+  /* Home */
+  .home {
+    height: 100vh;
+  }
   /* About */
   .about {
     height: 100vh;
@@ -291,8 +292,12 @@ body {
   }
 
   /* Teacher */
-
   .teacher {
+    height: 100vh;
+  }
+
+  /* Gellry */
+  .gallery {
     height: 100vh;
   }
 }
