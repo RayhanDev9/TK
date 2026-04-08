@@ -24,6 +24,9 @@ button.addEventListener("click", function () {
 btnOverlay.addEventListener("click", function () {
   overlay.classList.remove("hidden");
   overlay.classList.add("active");
+
+    // overflow: hidden;
+  document.body.style.overflow = "hidden"; // nonaktifkan scroll
   console.info("ok");
 });
 
