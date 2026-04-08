@@ -45,12 +45,34 @@ btnCloseOverlay.addEventListener("click", function () {
 //Apper
 
 const appearFrist = function () {
-  const activeItem = document.querySelector(".carousel-item")
-console.info(activeItem)
+  const item = document.querySelector(".carousel-item");
 
-}
+  const text = item.querySelector(".h3-slide");
+  const img = item.querySelector("img");
 
-appearFrist()
+  // Ambil ulang element yang sudah punya class appear (bisa pakai text langsung)
+  const appear = text; // karena text sudah pasti yang aktif
+  const lebar = innerWidth;
+
+  const posisiAppear = function (top, left) {
+    if (img.src.includes("slide-1.png")) {
+      console.info("Active slide image:", img.src);
+      appear.style.top = `${top}%`;
+      appear.style.left = `${left}%`;
+      appear.style.opacity = "1";
+    }
+  };
+  // Memanggil function sesuai lebar jendela layar
+  if (lebar > 0 && lebar < 500) {
+    posisiAppear("73", "10");
+  } else if (lebar > 500 && lebar < 776) {
+    posisiAppear("78", "10");
+  } else if (lebar > 776) {
+    posisiAppear("60", "16");
+  }
+};
+
+appearFrist();
 
 document.addEventListener("slid.bs.carousel", function (event) {
   // Menagkan carousel yang active saja
@@ -84,7 +106,6 @@ document.addEventListener("slid.bs.carousel", function (event) {
 
   // function ngatur posisi berdasarkan gambar
   const posisiAppear = function (top, left) {
-    console.info("ok");
     if (img.src.includes("slide-1.png")) {
       console.info("Active slide image:", img.src);
       appear.style.top = `${top}%`;

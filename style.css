@@ -201,7 +201,7 @@
 
   .h3-slide {
     transition: all 0.5s ease;
-    opacity: 1;
+    opacity: 0;
     top: 80%;
     left: 20%;
     z-index: 99;
