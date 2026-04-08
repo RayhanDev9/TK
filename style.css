@@ -1,4 +1,4 @@
-                /* < 576x*/
+/* < 576x*/
 @media screen and (min-width: 0px) {
   body {
     padding-top: 0;
@@ -26,6 +26,14 @@
 
   .nav-link {
     color: white;
+  }
+
+  .donwload {
+    color: white;
+  }
+
+  .donwload:hover {
+    color: black;
   }
 
   .active {
