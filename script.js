@@ -10,6 +10,8 @@ console.info(typeof Number(innerWidth) === "number");
 // Logo
 const navbar = document.querySelector(".navbar");
 const button = navbar.querySelector("button");
+
+// Event Logo
 button.addEventListener("click", function () {
   if (!button.classList.contains("collapsed")) {
     const logo = document.querySelector(".logo");
@@ -27,11 +29,11 @@ btnOverlay.addEventListener("click", function () {
   overlay.classList.remove("hidden");
   overlay.classList.add("active");
 
-    //agar tidak bisa di scroll
+  //agar tidak bisa di scroll
   document.body.style.overflow = "hidden"; // nonaktifkan scroll
   console.info("ok");
 });
-
+// Close overlay
 btnCloseOverlay.addEventListener("click", function () {
   overlay.classList.add("hidden");
   overlay.classList.remove("active");
@@ -48,12 +50,12 @@ document.addEventListener("slid.bs.carousel", function (event) {
   // Jika activeItem null,maka langsung di rturn agar tidak eroro
   if (!activeItem) return;
 
+  // Menangkap img slide dan appear
   const img = activeItem.querySelector("img");
   const text = activeItem.querySelector(".h3-slide");
 
+  // Jika img atau text,maka langsung di rturn agar tidak eroro
   if (!img || !text) return;
-
-  console.info("Active slide image:", img.src);
 
   // Reset semua text
   document.querySelectorAll(".h3-slide").forEach(function (el) {
@@ -71,7 +73,7 @@ document.addEventListener("slid.bs.carousel", function (event) {
   const appear = text; // karena text sudah pasti yang aktif
   const lebar = innerWidth;
 
-  // Atur posisi berdasarkan gambar
+  // function ngatur posisi berdasarkan gambar
   const posisiAppear = function (s1, sAll) {
     console.info("ok");
     if (img.src.includes("slide-1.png")) {
@@ -95,6 +97,7 @@ document.addEventListener("slid.bs.carousel", function (event) {
     }
   };
 
+  // Memanggil function sesuai lebar jendela layar
   if (lebar > 0 && lebar < 500) {
     posisiAppear("80", "73");
   } else if (lebar > 500 && lebar < 992) {
@@ -103,7 +106,7 @@ document.addEventListener("slid.bs.carousel", function (event) {
     posisiAppear("66", "67");
   }
 
-  appear.style.zIndex = "999999";
+  appear.style.zIndex = "999999"; // agar di depan gambar apearnya
   appear.style.position = "absolute"; // Pastikan position absolute
   appear.style.transition = "opacity 0.3s ease"; // Opsional: animasi halus
 });
@@ -125,7 +128,7 @@ function sendToWhatsApp() {
   window.open(url, "_blank");
 }
 
+// Kirim pesan ke wa
 sendWA.addEventListener("click", function () {
   sendToWhatsApp();
-  console.info("ok");
 });
