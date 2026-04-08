@@ -48,8 +48,8 @@ document.addEventListener("slid.bs.carousel", function (event) {
   document.querySelectorAll(".h3-slide").forEach(function (el) {
     el.classList.remove("appear");
     // Reset style inline biar ga numpuk
-    el.style.top = "70";
-    el.style.left = "20";
+    el.style.top = "70%";
+    el.style.left = "20%";
     el.style.opacity = "0";
   });
 
@@ -62,6 +62,7 @@ document.addEventListener("slid.bs.carousel", function (event) {
 
   // Atur posisi berdasarkan gambar
   const posisiAppear = function (s1, sAll) {
+    console.info("ok");
     if (img.src.includes("slide-1.png")) {
       console.info("Active slide image:", img.src);
       appear.style.top = `${s1}%`;
@@ -86,16 +87,14 @@ document.addEventListener("slid.bs.carousel", function (event) {
 
   if (lebar > 0 && lebar < 500) {
     posisiAppear("80", "73");
-    console.info("ok");
-  } else if (lebar > 500 && lebar > 992) {
+  } else if (lebar > 500 && lebar < 992) {
+    console.info(lebar > 0);
     posisiAppear("86", "79");
-    console.info("ok");
   } else if (lebar > 992) {
     posisiAppear("91", "87");
-    console.info("ok");
   }
 
-  appear.style.zIndex = "99";
+  appear.style.zIndex = "999999";
   appear.style.position = "absolute"; // Pastikan position absolute
   appear.style.transition = "opacity 0.3s ease"; // Opsional: animasi halus
 });
