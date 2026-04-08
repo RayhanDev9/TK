@@ -188,8 +188,10 @@
     color: white;
   }
   .carousel-item {
-    aspect-ratio: 20/9; /* Slide bentuk panjang */
+    aspect-ratio: 20/9;
+    width:100% ;
   }
+
 
   .carousel-item img {
     max-width: 100%;
@@ -236,13 +238,16 @@
 
 /* 500px <= 768px */
 @media screen and (min-width: 500px) {
+   .about-right {
+    height: 50vh;
+  }
 }
 
 /* 768px <= 992px */
 @media screen and (min-width: 768px) {
   /* about */
   .about-right {
-    height: 40vh;
+    height: 50vh;
   }
 
   /* Gllery */

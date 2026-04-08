@@ -43,6 +43,15 @@ btnCloseOverlay.addEventListener("click", function () {
 });
 
 //Apper
+
+const appearFrist = function () {
+  const activeItem = document.querySelector(".carousel-item")
+console.info(activeItem)
+
+}
+
+appearFrist()
+
 document.addEventListener("slid.bs.carousel", function (event) {
   // Menagkan carousel yang active saja
   const activeItem = document.querySelector(".carousel-item.active");
@@ -74,36 +83,36 @@ document.addEventListener("slid.bs.carousel", function (event) {
   const lebar = innerWidth;
 
   // function ngatur posisi berdasarkan gambar
-  const posisiAppear = function (s1, sAll) {
+  const posisiAppear = function (top, left) {
     console.info("ok");
     if (img.src.includes("slide-1.png")) {
       console.info("Active slide image:", img.src);
-      appear.style.top = `${s1}%`;
-      appear.style.left = "23%";
+      appear.style.top = `${top}%`;
+      appear.style.left = `${left}%`;
       appear.style.opacity = "1";
     } else if (img.src.includes("slide-2.png")) {
-      appear.style.top = `${sAll}%`;
-      appear.style.left = "16%";
+      appear.style.top = `${top}%`;
+      appear.style.left = `${left}%`;
       appear.style.opacity = "1";
     } else if (img.src.includes("slide-3.png")) {
-      appear.style.top = `${sAll}%`;
-      appear.style.left = "16%";
+      appear.style.top = `${top}%`;
+      appear.style.left = `${left}%`;
       appear.style.opacity = "1";
     } else {
       // Default untuk slide lain
-      appear.style.top = `${sAll}`;
-      appear.style.left = "16%";
+      appear.style.top = `${top}`;
+      appear.style.left = `${left}%`;
       appear.style.opacity = "1";
     }
   };
 
   // Memanggil function sesuai lebar jendela layar
   if (lebar > 0 && lebar < 500) {
-    posisiAppear("80", "73");
-  } else if (lebar > 500 && lebar < 992) {
-    posisiAppear("86", "79");
-  } else if (lebar > 992) {
-    posisiAppear("66", "67");
+    posisiAppear("73", "10");
+  } else if (lebar > 500 && lebar < 776) {
+    posisiAppear("78", "10");
+  } else if (lebar > 776) {
+    posisiAppear("60", "16");
   }
 
   appear.style.zIndex = "999999"; // agar di depan gambar apearnya
