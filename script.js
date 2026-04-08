@@ -44,7 +44,9 @@ btnCloseOverlay.addEventListener("click", function () {
 
 //Apper
 
+// function untuk menjalankan animation ke pada slide pertama
 const appearFrist = function () {
+  // Mengkap hanya gambar pertama
   const item = document.querySelector(".carousel-item");
 
   const text = item.querySelector(".h3-slide");
