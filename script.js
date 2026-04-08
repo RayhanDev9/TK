@@ -70,16 +70,16 @@ document.addEventListener("slid.bs.carousel", function (event) {
       appear.style.opacity = "1";
     } else if (img.src.includes("slide-2.png")) {
       appear.style.top = `${sAll}%`;
-      appear.style.left = "20%";
+      appear.style.left = "16%";
       appear.style.opacity = "1";
     } else if (img.src.includes("slide-3.png")) {
       appear.style.top = `${sAll}%`;
-      appear.style.left = "20%";
+      appear.style.left = "16%";
       appear.style.opacity = "1";
     } else {
       // Default untuk slide lain
       appear.style.top = `${sAll}`;
-      appear.style.left = "20%";
+      appear.style.left = "16%";
       appear.style.opacity = "1";
     }
   };

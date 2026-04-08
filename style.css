@@ -248,12 +248,13 @@ body {
 
   /* Gllery */
   .carousel-item {
-  aspect-ratio: 20/9; /* Slide bentuk panjang */
-}
-  /* .carousel-item img {
-    width: 100%;
-    height: 100%;
-  } */
+    aspect-ratio: 20/9; /* Slide bentuk panjang */
+  }
+
+  .carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 /* 500px <= 768px */
@@ -265,6 +266,12 @@ body {
   /* about */
   .about-right {
     height: 40vh;
+  }
+
+  /* Gllery */
+  .carousel-item img {
+    max-width: 75%;
+    max-height: 75%;
   }
 }
 
@@ -288,10 +295,4 @@ body {
   .teacher {
     height: 100vh;
   }
-
-  /* Gllery */
-  /* .carousel-item img {
-    width: 90%;
-    height: 90%;
-  } */
-} 
+}
