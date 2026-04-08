@@ -1,0 +1,230 @@
+body {
+  padding-top: 0;
+  margin: 0;
+  /* scroll-padding-top: 70px; tinggi navbar */
+  /* scroll-behavior: smooth; */
+  box-sizing: border-box;
+}
+
+h2 {
+  left: 4rem;
+  top: 1.6rem;
+}
+
+.anchor {
+  scroll-margin-top: 80px;
+}
+
+.anchor-2 {
+  scroll-margin-top: 55px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #00baf1;
+  border-bottom: 0px solid white !important;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  color: white;
+}
+
+.active {
+  color: white !important;
+  font-weight: bolder;
+}
+
+.logo {
+  position: absolute;
+  top: 12%;
+  left: 3%;
+}
+
+/* Overlay */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* gelap transparan */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  top: 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center; /* horizontal tengah */
+  opacity: 0;
+}
+
+.button-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  font-weight: bolder;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  z-index: 10000;
+}
+
+.button-close:hover {
+  color: red;
+}
+
+.logo-overlay {
+  width: 50%;
+  max-width: 350px; /* batas maksimal */
+  height: auto; /* biar proporsional */
+  display: block;
+  margin: 0 auto;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Home */
+.home {
+  margin-top: 2rem;
+  /* padding-top:95px ;  */
+  /* color: #00baf1; */
+}
+.p-tag {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.p-tag:hover {
+  color: #00baf1;
+}
+
+
+.btn-cta {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: auto;
+  background: rgb(0, 186, 241);
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.btn-cta:hover {
+  background-color: rgba(0, 186, 241, 0.9) !important;
+  color: white !important;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.img-home {
+  transition: all 0.3s ease;
+}
+
+/* About */
+.about {
+  /* padding-top:95px ; */
+  background-color: rgb(0, 186, 241);
+  color: white;
+  /* margin-bottom: ; */
+  margin: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.about-right {
+  height: 50vh;
+}
+
+.img-about {
+  width: 100vh;
+  height: 50vh;
+  border-radius: 0 0 50% 50%;
+}
+
+.text-about {
+  margin: auto;
+  width: 75vw;
+  margin-top: 2rem;
+  /* margin-bottom: 2rem; */
+}
+
+/* Teacher */
+
+.teacher {
+  height: 100vh;
+}
+
+/* Gellry */
+.gallery {
+  height: 100vh;
+  background-color: #00baf1;
+  color: white;
+}
+
+.img-slide {
+  width: 88vw;
+  height: 65vh;
+  object-fit: cover;
+  /* box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3); */
+  margin-block: 20px; /* beri ruang untuk shadow */
+  filter: drop-shadow(5px 5px 8px black);
+}
+
+.h3-slide {
+  top: 82%;
+  left: 16%;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.h3-slide.appear {
+  top: 78%;
+  left: 16%;
+  z-index: 99;
+  opacity: 1;
+}
+
+/* Location */
+.location {
+  height: 90vh;
+}
+
+/* Contact */
+.send-massege {
+  background-color: rgb(0, 186, 241);
+}
+
+.icon-contact {
+  color:#00baf1 ;
+}
+
+.icon-footer {
+  color:#00baf1 ;
+}
+
+.form-contact-input:focus {
+border: none !important;
+outline: none !important;
+/* box-shadow: 5px 5px 5px 5px  rgba(0, 186, 241,.3); */
+filter: drop-shadow(5px 5px 5px 5px  rgba(0, 186, 241,.1));
+}
+
+#send-massege:hover {
+background-color: #00baf1 ;
+}
