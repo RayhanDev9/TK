@@ -206,6 +206,12 @@ h3 {
     height: auto;
   }
 
+  .card-img-top {
+    height: 21rem;
+    object-fit: cover;
+  }
+  
+
   /* Gllery */
   .gallery {
     height: auto;
