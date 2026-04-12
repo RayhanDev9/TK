@@ -271,6 +271,10 @@ h3 {
 
 /* 768px <= 992px */
 @media screen and (min-width: 768px) {
+   /* Nav */
+  .navbar-nav .nav-link {
+    font-size: 1.2rem; /* atau 18px, 20px, dll */
+  }
   .home {
     height: 100vh;
     display: flex;
@@ -303,6 +307,7 @@ h3 {
 
 /* 992px <= 1200px */
 @media screen and (min-width: 992px) {
+ 
   /* Home */
   .home {
     height: 100vh;
