@@ -215,13 +215,13 @@ h3 {
   /* Gllery */
   .gallery {
     height: auto;
-    padding-bottom: 2rem;
+    padding-bottom: 20rem;
     /* width: 100vw; */
     background-color: #00baf1;
     color: white;
   }
   .carousel-item {
-    aspect-ratio: 20/9;
+    aspect-ratio: 18/9;
     width: 100%;
   }
 
