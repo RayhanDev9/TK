@@ -172,7 +172,7 @@ h3 {
 
   /* About */
   .h2-about {
-     position: absolute;
+    position: absolute;
     left: 2rem;
     top: 1.3rem;
   }
@@ -210,7 +210,6 @@ h3 {
     height: 21rem;
     object-fit: cover;
   }
-  
 
   /* Gllery */
   .gallery {
@@ -220,6 +219,14 @@ h3 {
     background-color: #00baf1;
     color: white;
   }
+
+  .container-gallery-slid-sub {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 50vh; /* minimal setinggi layar */
+  }
+
   .carousel-item {
     aspect-ratio: 16/9;
     width: 100%;
@@ -350,5 +357,9 @@ h3 {
   /* Gellry */
   .gallery {
     height: 100vh;
+  }
+
+    .carousel-item {
+    aspect-ratio: 18/9;
   }
 }
