@@ -209,7 +209,11 @@ h1 {
 
   .text-about {
     margin: auto;
-    width: 97vw;
+    width: 90vw;
+  }
+
+  .text-justfy {
+    text-align: justify;
   }
 
   /* Teacher */
@@ -329,6 +333,10 @@ h1 {
     height: auto;
   }
 
+  .text-justfy {
+    text-align: justify;
+  }
+
   /* Gllery */
   .carousel-item img {
     max-width: 75%;
@@ -369,7 +377,7 @@ h1 {
 
   /* Teacher */
   .teacher {
-    height: 100vh;
+    height: auto;
   }
 
   /* Gellry */
