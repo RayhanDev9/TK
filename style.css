@@ -172,6 +172,7 @@ h3 {
 
   /* About */
   .h2-about {
+     position: absolute;
     left: 2rem;
     top: 1.3rem;
   }
@@ -270,7 +271,7 @@ h3 {
 
 /* 768px <= 992px */
 @media screen and (min-width: 768px) {
-   /* Nav */
+  /* Nav */
   .navbar-nav .nav-link {
     font-size: 1.2rem; /* atau 18px, 20px, dll */
   }
@@ -306,12 +307,16 @@ h3 {
 
 /* 992px <= 1200px */
 @media screen and (min-width: 992px) {
- 
   /* Home */
   .home {
     height: 100vh;
   }
   /* About */
+  .h2-about {
+    position: static;
+    text-align: center;
+    padding-top: 3rem;
+  }
   .about {
     height: auto;
   }
