@@ -249,7 +249,12 @@ h3 {
 
   /* Location */
   .location {
-    height: 90vh;
+
+    height: 60vh;
+  }
+
+  .sub-location {
+    margin-top: 3rem;
   }
 
   /* Contact */
