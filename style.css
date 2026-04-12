@@ -320,6 +320,13 @@ h3 {
     height: auto;
   }
 
+  .img-about {
+    width: 75vw;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
   .text-about {
     width: 90vw;
   }
