@@ -186,11 +186,11 @@ h3 {
   }
 
   .about-right {
-    height: 30vh;
+    height: auto;
   }
 
   .img-about {
-    width: 100vh;
+    width: 100vw;
     height: auto;
     border-radius: 0 0 50% 50%;
   }
@@ -265,7 +265,7 @@ h3 {
 /* 500px <= 768px */
 @media screen and (min-width: 500px) {
   .about-right {
-    height: 50vh;
+    height: auto;
   }
 }
 
@@ -295,7 +295,7 @@ h3 {
 
   /* about */
   .about-right {
-    height: 50vh;
+    height: auto;
   }
 
   /* Gllery */
@@ -314,15 +314,15 @@ h3 {
   }
   /* About */
   .about {
-    height: 100vh;
+    height: auto;
   }
 
   .about-right {
-    height: 50vh;
+    height: auto;
   }
 
   .text-about {
-    width: 75vw;
+    width: 90vw;
   }
 
   /* Teacher */
