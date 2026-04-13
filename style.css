@@ -236,31 +236,37 @@ h1 {
 
   /* Gllery */
   .gallery {
-    height: auto;
-    padding-bottom: 20rem;
-    /* width: 100vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertikal tengah */
+    align-items: center; /* horizontal tengah */
+    min-height: 100vh;
+    width: 100%;
     background-color: #00baf1;
     color: white;
+    padding: 1rem;
   }
 
   .container-gallery-slid-sub {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    min-height: 50vh; /* minimal setinggi layar */
+    display: grid;
+    place-items: center; /* vertikal + horizontal tengah */
+    height: 100vh;
+  }
+
+  /* Pastikan container memiliki rasio */
+  .carousel-inner {
+    aspect-ratio: 16 / 9;
   }
 
   .carousel-item {
-    aspect-ratio: 16/9;
-    width: 100%;
+    height: 100%;
   }
 
   .carousel-item img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover; /* Gambar penuh tanpa gepeng */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-
   .h3-slide {
     transition: all 0.5s ease;
     opacity: 0;
@@ -349,6 +355,11 @@ h1 {
   .carousel-item img {
     max-width: 75%;
     max-height: 75%;
+  }
+
+  /* Location */
+  .location {
+    height: 60vh;
   }
 }
 
