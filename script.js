@@ -123,7 +123,7 @@ document.addEventListener("slid.bs.carousel", function (event) {
       appear.style.opacity = "1";
     } else {
       // Default untuk slide lain
-      appear.style.top = `${top}`;
+      appear.style.top = `${top}%`;
       appear.style.left = `${left}%`;
       appear.style.opacity = "1";
     }
