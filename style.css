@@ -181,6 +181,14 @@ h1 {
     transition: all 0.3s ease;
   }
 
+  /* Program */
+  .container-program {
+    height: auto;
+    width: 100%;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+  }
+
   /* About */
   .h2-about {
     position: absolute;
