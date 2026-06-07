@@ -144,13 +144,12 @@
   }
   .p-tag {
     color: black;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
-  .p-tag:hover {
-    color: #00baf1;
-  }
-
+.p-tag:hover {
+  transform: scale(1.05);
+}
   .btn-cta {
     display: inline-block;
     width: auto;
