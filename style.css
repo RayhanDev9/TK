@@ -23,7 +23,7 @@
   }
 
   h1 {
-    font-size: 5em;
+    font-size: 1.58em;
   }
   body {
     padding-top: 0;
@@ -132,6 +132,7 @@
   .home {
     line-height: 0;
     margin-bottom: 11rem;
+    min-height: 70vh;
   }
 
   .container-text-home {
@@ -178,6 +179,7 @@
 
   .img-home {
     transition: all 0.3s ease;
+    /* max-width: 90%; */
   }
 
   /* Program */
@@ -314,6 +316,9 @@
 
 /* 500px <= 768px */
 @media screen and (min-width: 500px) {
+  .home {
+    margin-bottom: 17rem;
+  }
   .about-right {
     height: auto;
   }
@@ -326,9 +331,8 @@
     font-size: 1.2rem; /* atau 18px, 20px, dll */
   }
   .home {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    margin-bottom: 0;
   }
 
   .container-text-home {
@@ -369,6 +373,8 @@
   /* Home */
   .home {
     height: 100vh;
+    margin-bottom: 0;
+
   }
   /* About */
   .h2-about {
