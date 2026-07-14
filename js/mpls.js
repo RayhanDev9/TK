@@ -13,9 +13,9 @@ const headerLogic = () => {
         "backdrop-blur-sm",
         "shadow-lg",
       );
-      setTimeout(() => {
-        main.classList.remove("mt-20");
-      }, 200);
+      // setTimeout(() => {
+      //   main.classList.remove("mt-20");
+      // }, 200);
     } else {
       navbar.classList.remove(
         "fixed",
@@ -24,12 +24,12 @@ const headerLogic = () => {
         "backdrop-blur-sm",
         "shadow-lg",
       );
-      navbar.classList.add("opacity-0");
-      setTimeout(() => {
-        navbar.classList.add("opacity-100");
+      // navbar.classList.add("opacity-0");
+      // setTimeout(() => {
+      //   navbar.classList.add("opacity-100");
 
-        main.classList.add("mt-20");
-      }, 200);
+      //   main.classList.add("mt-20");
+      // }, 200);
     }
   });
 };
