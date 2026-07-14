@@ -1183,6 +1183,9 @@
   .opacity-0 {
     opacity: 0%;
   }
+  .opacity-10 {
+    opacity: 10%;
+  }
   .opacity-85 {
     opacity: 85%;
   }

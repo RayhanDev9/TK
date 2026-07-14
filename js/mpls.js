@@ -13,7 +13,9 @@ const headerLogic = () => {
         "backdrop-blur-sm",
         "shadow-lg",
       );
-      main.classList.remove("mt-20");
+      setTimeout(() => {
+        main.classList.remove("mt-20");
+      }, 200);
     } else {
       navbar.classList.remove(
         "fixed",
@@ -22,7 +24,12 @@ const headerLogic = () => {
         "backdrop-blur-sm",
         "shadow-lg",
       );
-      main.classList.add("mt-20");
+      navbar.classList.add("opacity-0");
+      setTimeout(() => {
+        navbar.classList.add("opacity-100");
+
+        main.classList.add("mt-20");
+      }, 200);
     }
   });
 };
@@ -70,7 +77,7 @@ const vidioLoad = () => {
   videoContainer.innerHTML = `
     <div id="video-track" class="relative w-full h-full"></div>
 
-    <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-white bg-black/40 hover:bg-black/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all focus:outline-none hidden">
+    <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-white bg-black/40 hover:bg-black/80 p-2 rounded-full lg:opacity-0 group-hover:opacity-100 transition-all focus:outline-none hidden">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
     </button>
     
