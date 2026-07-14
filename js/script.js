@@ -13,14 +13,7 @@ const headerLogic = () => {
         "shadow-lg",
       );
     } else {
-      navbar.classList.remove(
-        "fixed",
-        "top-0",
-        "left-0",
-        "z-50",
-        "backdrop-blur-sm",
-        "shadow-lg",
-      );
+      navbar.classList.remove("fixed", "z-50", "backdrop-blur-sm", "shadow-lg");
       console.info("ok");
     }
   });

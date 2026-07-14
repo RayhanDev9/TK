@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head class="text-white bg-[#0f2028] scroll-smooth">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mpls</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="../asset/img/general/logo.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body class="text-white bg-[#0f2028] scroll-smooth">
+    <!-- Header -->
+    <header
+      class="absolute top-0 left-0 w-full flex items-center justify-between px-6 py-4 md:px-10 md:py-5 text-white z-40 transition-all duration-300"
+    >
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <img
+          src="../asset/img/general/logo.png"
+          alt="Logo TK PAUD Permata"
+          class="w-8 h-8 object-contain"
+        />
+        <span
+          class="text-sm font-semibold tracking-wide uppercase leading-tight"
+        >
+          TK PAUD Permata
+        </span>
+      </a>
+
+      <!-- Nav Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a
+          href="../index.html#home"
+          class="hover:text-orange-300 transition-colors"
+          >Home</a
+        >
+        <a
+          href="../index.html#about"
+          class="hover:text-orange-300 transition-colors"
+          >About</a
+        >
+        <a
+          href="../index.html#program"
+          class="hover:text-orange-300 transition-colors"
+          >Program</a
+        >
+        <a
+          href="../index.html#struktur"
+          class="hover:text-orange-300 transition-colors"
+          >Struktur</a
+        >
+        <a
+          href="../index.html#faq"
+          class="hover:text-orange-300 transition-colors"
+          >FAQ</a
+        >
+        <a
+          href="../index.html#gallery"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >Gallery</a
+        >
+        <a
+          href="../index.html#contact"
+          class="hover:text-orange-300 transition-colors"
+          >Contact</a
+        >
+        <a href="mpls.html" class="hover:text-orange-300 transition-colors"
+          >Mpls</a
+        >
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <a
+          href="../asset/img/general/brosur.pdf"
+          class="sm:inline-flex items-center gap-1.5 bg-orange-400 hover:bg-orange-500 text-black text-sm font-semibold px-2 py-1 md:px-4 md:py-2 rounded-full transition-colors w-20 flex"
+          download
+        >
+          Brosur
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <button
+          id="menu-toggle"
+          aria-label="Buka menu"
+          aria-expanded="false"
+          class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        >
+          <span class="w-5 h-0.5 bg-white rounded transition-all"></span>
+          <span class="w-5 h-0.5 bg-white rounded transition-all"></span>
+          <span class="w-5 h-0.5 bg-white rounded transition-all"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden fixed top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-sm z-30 flex-col items-center justify-center gap-8 text-white text-xl font-medium"
+      >
+        <!-- Logo -->
+        <a href="#" class="absolute top-5 left-6 flex items-center gap-2">
+          <img
+            src="../asset/img/general/logo.png"
+            alt="Logo TK PAUD Permata"
+            class="w-8 h-8 object-contain"
+          />
+          <span
+            class="text-sm font-semibold tracking-wide uppercase leading-tight"
+          >
+            TK PAUD Permata
+          </span>
+        </a>
+
+        <!-- Brosur -->
+        <a
+          href="../asset/img/general/brosur.pdf"
+          class="absolute top-6 right-19 m:inline-flex items-center gap-1.5 bg-orange-400 hover:bg-orange-500 text-black text-sm font-semibold px-2 py-1 md:px-4 md:py-2 rounded-full transition-colors w-20 flex"
+        >
+          <span class="inline-block"> Brosur</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4 m-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </a>
+
+        <!-- Close -->
+        <button
+          id="menu-close"
+          aria-label="Tutup menu"
+          class="absolute top-5 right-6 text-3xl rounded-full hover:bg-white/20 py-1 px-2 transition-colors"
+        >
+          ✕
+        </button>
+
+        <a
+          href="../index.html#home"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >Home</a
+        >
+        <a
+          href="../index.html#about"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >About</a
+        >
+        <a
+          href="../index.html#program"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >Program</a
+        >
+        <a
+          href="../index.html#struktur"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >Struktur</a
+        >
+        <a
+          href="../index.html#faq"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >FAQ</a
+        >
+        <a
+          href="../index.html#gallery"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >Gallery</a
+        >
+        <a
+          href="../index.html#contact"
+          class="hover:text-orange-300 transition-colors nav-link"
+          >Contact</a
+        >
+        <a href="mpls.html" class="hover:text-orange-300 transition-colors"
+          >Mpls</a
+        >
+      </div>
+    </header>
+
+    <main class="mt-20">
+      <!-- Vidio Section Start -->
+      <section
+        id="video-container"
+        class="relative w-full max-w-xs aspect-[9/16] bg-black overflow-hidden rounded-xl shadow-2xl group mx-auto transition-all duration-300"
+      ></section>
+      <!-- Img section Start -->
+
+      <div
+        id="gallery-container"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto my-10"
+      ></div>
+
+      <div
+        id="overlay"
+        class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300"
+      >
+        <button
+          id="close-btn"
+          class="absolute top-5 right-5 text-white text-4xl hover:text-gray-400 cursor-pointer transition-colors z-20"
+        >
+          &times;
+        </button>
+
+        <div
+          class="relative flex items-center justify-center w-full max-w-6xl px-4"
+        >
+          <button
+            id="prev-btn"
+            class="absolute left-2 md:left-10 text-white text-3xl md:text-5xl hover:text-gray-400 cursor-pointer p-2 transition-colors"
+          >
+            &#10094;
+          </button>
+
+          <img
+            id="modal-img"
+            src=""
+            alt="Gambar Diperbesar"
+            class="max-h-[85vh] max-w-full object-contain rounded-md shadow-2xl transition-transform duration-300 scale-95"
+          />
+
+          <button
+            id="next-btn"
+            class="absolute right-2 md:right-10 text-white text-3xl md:text-5xl hover:text-gray-400 cursor-pointer p-2 transition-colors"
+          >
+            &#10095;
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <a
+      href="https://wa.me/6285692590096"
+      target="_blank"
+      class="fixed bottom-5 right-5 text-white bg-white/20 backdrop-blur-md border border-white/20 p-2 md:p-3 rounded-full shadow-lg transition duration-700 z-20 animate-bounce"
+    >
+      <img
+        src="../asset/svg/whatsapp-svgrepo-com.svg"
+        alt=""
+        class="w-7 md:w-9"
+      />
+    </a>
+
+    <footer class="bg-[#002733] text-white">
+      <div class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <!-- Logo -->
+          <div>
+            <h3 class="text-2xl font-bold">TK PAUD Permata</h3>
+
+            <p class="mt-4 text-slate-300">
+              Tempat anak belajar, bermain, dan berkembang dalam lingkungan yang
+              aman, nyaman, dan menyenangkan.
+            </p>
+          </div>
+
+          <!-- Menu -->
+          <div class="md:mx-auto">
+            <h4 class="font-semibold text-lg mb-4">Menu</h4>
+
+            <ul class="space-y-3 text-slate-300">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#struktur">Struktur</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Kontak -->
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Kontak</h4>
+
+            <ul class="space-y-3 text-slate-300">
+              <li>
+                <a
+                  href="https://maps.google.com/maps?q=-6.2547222,106.4549444&z=15&output=embedhttps://www.google.com/maps/place/6%C2%B015'17.0%22S+106%C2%B027'17.8%22E/@-6.254722,106.454944,2993m/data=!3m1!1e3!4m4!3m3!8m2!3d-6.2547222!4d106.4549444?hl=id&entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  >📍 Pete, Tigaraksa, Tangerang</a
+                >
+              </li>
+              <li>
+                📞 <a href="https://wa.me/6285692590096">+62 856-9259-0096</a>
+              </li>
+              <li>
+                ✉️
+                <a href="mailto:yayasanrayfi@gmail.com"
+                  >yayasanrayfi@gmail.com</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sosial Media -->
+          <div class="md:mx-auto">
+            <h4 class="font-semibold text-lg mb-4">Ikuti Kami</h4>
+
+            <div class="flex gap-4">
+              <a
+                href="mailto:yayasanrayfi@gmail.com"
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 hover:-translate-y-2"
+              >
+                <img
+                  src="../asset/svg/gmail-svgrepo-com.svg"
+                  alt=""
+                  class="w-6"
+                />
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@yayasanrayfitkpermata?_r=1&_t=ZS-95Uz27c1EE1"
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 hover:-translate-y-2"
+              >
+                <img
+                  src="../asset/svg/tiktok-icon-black-1-logo-svgrepo-com.svg"
+                  alt=""
+                  class="w-6"
+                />
+              </a>
+
+              <a
+                href="https://wa.me/6285692590096"
+                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 hover:-translate-y-2"
+              >
+                <img
+                  src="../asset/svg/whatsapp-svgrepo-com.svg"
+                  alt=""
+                  class="w-6"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 mt-12 pt-6">
+          <p class="text-center text-slate-400 text-sm">
+            © 2026 TK PAUD Permata. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/mpls.js"></script>
+  </body>
+</html>
