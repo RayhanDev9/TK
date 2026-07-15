@@ -67,6 +67,8 @@ const vidioLoad = () => {
   const videos = [
     "../asset/video/mpls/mpls-1.mp4",
     "../asset/video/mpls/mpls-2.mp4",
+    "../asset/video/mpls/mpls-3.mp4",
+
     // Tambahkan video lainnya di sini
   ];
 
