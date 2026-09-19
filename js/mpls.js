@@ -81,23 +81,23 @@ const vidioLoad = () => {
   videoContainer.innerHTML = `
     <div id="video-track" class="relative w-full h-full"></div>
 
-    <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-white bg-black/40 hover:bg-black/80 p-2 rounded-full lg:opacity-0 group-hover:opacity-100 transition-all focus:outline-none hidden">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+    <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-white bg-black/40 hover:bg-black/80 w-10 h-10 flex items-center justify-center rounded-full lg:opacity-0 group-hover:opacity-100 transition-all focus:outline-none hidden cursor-pointer btn-press">
+      <svg class="w-4 h-4 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
     </button>
     
-    <button id="next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 text-white bg-black/40 hover:bg-black/80 p-2 rounded-full lg:opacity-0 group-hover:opacity-100 transition-all focus:outline-none hidden">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    <button id="next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 text-white bg-black/40 hover:bg-black/80 w-10 h-10 flex items-center justify-center rounded-full lg:opacity-0 group-hover:opacity-100 transition-all focus:outline-none hidden cursor-pointer btn-press">
+      <svg class="w-4 h-4 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
     </button>
 
     <div class="absolute z-20 bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 flex justify-between items-center lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 
-      <button id="play-pause-btn" class="text-white hover:text-blue-400 focus:outline-none transition-colors">
-        <svg id="icon-play" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-        <svg id="icon-pause" class="w-8 h-8 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
+      <button id="play-pause-btn" class="text-white hover:text-amber-400 focus:outline-none transition-colors cursor-pointer btn-press">
+        <svg id="icon-play" class="w-7 h-7 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+        <svg id="icon-pause" class="w-7 h-7 text-white hidden" viewBox="0 0 320 512" fill="currentColor"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>
       </button>
 
-      <button id="fullscreen-btn" class="text-white hover:text-blue-400 focus:outline-none transition-colors">
-        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" /></svg>
+      <button id="fullscreen-btn" class="text-white hover:text-amber-400 focus:outline-none transition-colors cursor-pointer btn-press">
+        <svg class="w-6 h-6 text-white" viewBox="0 0 448 512" fill="currentColor"><path d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V384c0-17.7-14.3-32-32-32zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zm96 320c-17.7 0-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V384c0-17.7-14.3-32-32-32z"/></svg>
       </button>
     </div>
   `;
@@ -289,16 +289,17 @@ const imgLoade = () => {
   let galleryHTML = "";
   imageUrls.forEach((url, index) => {
     galleryHTML += `
-                <div class="overflow-hidden bg-white rounded-lg shadow-md cursor-pointer group">
-                    <img 
-                        src="${url}" 
-                        alt="Galeri ${index + 1}" 
-                        data-index="${index}"
-                        class="gallery-item w-full h-64 sm:h-72 lg:h-80 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
-                        loading="lazy"
-                    />
-                </div>
-            `;
+      <div class="overflow-hidden bg-white rounded-2xl shadow-md border border-amber-100 cursor-pointer group hover:shadow-xl transition-all duration-300">
+        <img 
+          src="${url}" 
+          alt="Dokumentasi Seru Kegiatan MPLS TK PAUD Permata Tigaraksa Foto ${index + 1}" 
+          data-index="${index}"
+          class="gallery-item w-full h-56 sm:h-64 lg:h-72 object-cover transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    `;
   });
   galleryContainer.innerHTML = galleryHTML;
 

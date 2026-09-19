@@ -1,463 +1,390 @@
+// TK PAUD Permata - Interactive Script
+
+// 1. Header Sticky & Scroll Shadow Logic
 const headerLogic = () => {
   const navbar = document.querySelector("header");
-  const navTop = navbar.offsetTop;
+  if (!navbar) return;
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > navTop) {
-      navbar.classList.add(
-        "fixed",
-        "top-0",
-        "left-0",
-        "z-50",
-        "backdrop-blur-sm",
-        "shadow-lg",
-      );
+    if (window.scrollY > 20) {
+      navbar.classList.add("bg-white/95", "shadow-md", "backdrop-blur-md", "py-3");
+      navbar.classList.remove("py-5", "bg-transparent");
     } else {
-      navbar.classList.remove("fixed", "z-50", "backdrop-blur-sm", "shadow-lg");
-      console.info("ok");
+      navbar.classList.remove("bg-white/95", "shadow-md", "backdrop-blur-md", "py-3");
+      navbar.classList.add("py-5", "bg-transparent");
     }
   });
 };
-headerLogic();
 
-const humbergerLogic = () => {
+// 2. Mobile Menu Toggle Logic
+const mobileMenuLogic = () => {
   const toggle = document.getElementById("menu-toggle");
   const close = document.getElementById("menu-close");
   const menu = document.getElementById("mobile-menu");
 
-  toggle.addEventListener("click", () => {
+  if (!toggle || !menu) return;
+
+  const openMenu = () => {
     menu.classList.remove("hidden");
     menu.classList.add("flex");
     toggle.setAttribute("aria-expanded", "true");
-  });
+    document.body.style.overflow = "hidden";
+  };
 
-  menu.querySelectorAll(".nav-link").forEach((item) => {
-    item.addEventListener("click", () => {
-      menu.classList.add("hidden");
-      menu.classList.remove("flex");
-      toggle.setAttribute("aria-expanded", "false");
-      console.info("ok");
-    });
-  });
-
-  close.addEventListener("click", () => {
+  const closeMenu = () => {
     menu.classList.add("hidden");
     menu.classList.remove("flex");
     toggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+
+  toggle.addEventListener("click", openMenu);
+  if (close) close.addEventListener("click", closeMenu);
+
+  menu.querySelectorAll(".nav-link").forEach((item) => {
+    item.addEventListener("click", closeMenu);
   });
 };
 
-humbergerLogic();
+// 3. About Stats Cycling Animation Logic
+const aboutStatsLogic = () => {
+  const statusCards = document.querySelectorAll(".about-status > div");
+  if (statusCards.length === 0) return;
 
-const aboutLogic = () => {
-  const aboutStatusChildEl = [
-    ...document.querySelectorAll(".about-status > div"),
-  ];
-
-  let cnt = 2;
+  let currentIndex = 0;
   setInterval(() => {
-    aboutStatusChildEl.forEach((child) => {
-      const isHidden = child.classList.contains("hidden");
-      if (!isHidden) {
-        child.classList.add("hidden");
-        child.classList.add("opacity-0");
-        child.classList.remove("opacity-100");
-      }
-
-      const id = Number(child.dataset.idAbout);
-
-      if (cnt === id) {
-        if (isHidden) {
-          child.classList.remove("hidden");
-          child.classList.add("opacity-100");
-          child.classList.remove("opacity-0");
-
-          console.info(true);
-        }
+    statusCards.forEach((card, index) => {
+      if (index === currentIndex) {
+        card.classList.remove("hidden", "opacity-0");
+        card.classList.add("opacity-100", "scale-100");
+      } else {
+        card.classList.add("hidden", "opacity-0");
+        card.classList.remove("opacity-100", "scale-100");
       }
     });
-    cnt = cnt === aboutStatusChildEl.length ? 1 : cnt + 1;
-  }, 2500);
+    currentIndex = (currentIndex + 1) % statusCards.length;
+  }, 3000);
 };
 
-aboutLogic();
+// 4. Program Visi/Misi/Kurikulum Accordion Logic
+const programAccordionLogic = () => {
+  const cards = document.querySelectorAll(".card-program");
+  if (cards.length === 0) return;
 
-const programLogic = () => {
-  const cardProgram = document.querySelectorAll(".card-program");
+  cards.forEach((card) => {
+    const header = card.querySelector(".card-header");
+    const content = card.querySelector(".card-content");
+    const icon = card.querySelector(".card-icon");
 
-  cardProgram.forEach((card) => {
-    const p = card.querySelector("p");
-    p.classList.add("translate-y-3");
+    if (!header || !content) return;
 
-    card.addEventListener("click", () => {
-      const h3 = card.querySelector("h3");
-      const p = card.querySelector("p");
-      console.info(card);
+    header.addEventListener("click", () => {
+      const isExpanded = !content.classList.contains("hidden");
 
-      const isOpen = !p.classList.contains("hidden");
-
-      // tutup semua
-      cardProgram.forEach((item) => {
-        const itemH3 = item.querySelector("h3");
-        const itemP = item.querySelector("p");
-
-        itemP.classList.add("hidden");
-        itemP.classList.remove("opacity-100");
-        itemP.classList.add("opacity-0");
-        p.classList.add("translate-y-3");
+      // Close all cards first
+      cards.forEach((otherCard) => {
+        const otherContent = otherCard.querySelector(".card-content");
+        const otherIcon = otherCard.querySelector(".card-icon");
+        if (otherContent) {
+          otherContent.classList.add("hidden", "opacity-0");
+          otherContent.classList.remove("opacity-100");
+        }
+        if (otherIcon) {
+          otherIcon.classList.remove("rotate-180");
+        }
       });
 
-      // buka card yang diklik
-      if (!isOpen) {
-        p.classList.remove("hidden");
-
+      // Toggle clicked card
+      if (!isExpanded) {
+        content.classList.remove("hidden");
         requestAnimationFrame(() => {
-          p.classList.remove("opacity-0", "translate-y-3");
-          p.classList.add("opacity-100", "translate-y-0");
+          content.classList.remove("opacity-0");
+          content.classList.add("opacity-100");
         });
+        if (icon) icon.classList.add("rotate-180");
       }
     });
   });
 };
 
-programLogic();
-
+// 5. FAQ Accordion Logic
 const faqLogic = () => {
-  const data = [
+  const faqData = [
     {
-      question: "Berapa usia minimal untuk masuk ?",
-      answer: "Usia minimal 4 tahun pada awal tahun ajaran baru.",
+      question: "Berapa usia minimal untuk mendaftar di TK Permata?",
+      answer: "Untuk Kelompok Bermain (Playgroup) usia mulai dari 2–4 tahun, sedangkan untuk TK Kelompok A dan B usia 4–6 tahun.",
+      category: "Pendaftaran"
     },
     {
-      question: "Apa saja syarat pendaftaran ?",
-      answer:
-        "Usia anak minimal 4 tahun pada awal tahun ajaran baru, fotokopi akta kelahiran, kartu keluarga, KTP ayah ibu.",
+      question: "Apa saja dokumen persyaratan pendaftaran?",
+      answer: "Persyaratan sangat mudah: Fotokopi Akta Kelahiran anak, fotokopi Kartu Keluarga (KK), dan fotokopi KTP Ayah & Ibu.",
+      category: "Syarat"
     },
     {
-      question: "Berapa biaya pendaftaran dan uang sekolah ?",
-      answer:
-        "Biaya awal masuk sebesar Rp 470.000, yang sudah mencakup seragam batik, seragam olahraga, busana muslim/muslimah, pensil warna, dan buku gambar. Adapun SPP bulanan sebesar Rp 60.000.",
+      question: "Berapa rincian biaya pendaftaran dan SPP bulanan?",
+      answer: "Biaya awal masuk sangat terjangkau yaitu Rp 470.000 (sudah mencakup 3 set seragam: batik, olahraga, muslim/muslimah, pensil warna, dan buku gambar). SPP bulanan hanya Rp 60.000.",
+      category: "Biaya"
     },
     {
-      question: "Apa kurikulum yang digunakan ?",
-      answer:
-        "Kurikulum TK Permata mengacu pada Standar Nasional Pendidikan Kementerian Pendidikan dan Kebudayaan serta disesuaikan dengan perkembangan zaman dan kebutuhan peserta didik.",
+      question: "Bagaimana kurikulum dan metode belajar yang diterapkan?",
+      answer: "Kami menggunakan Kurikulum Standar Nasional PAUD Kemendikbudristek yang dipadukan dengan pembelajaran tematik Islami (Active & Fun Learning) berbasis bermain sambil belajar.",
+      category: "Kurikulum"
     },
     {
-      question: "Jam belajar dimulai dan berakhir pukul berapa ?",
-      answer: "Kegiatan belajar mengajar dimulai pukul 07.45 hingga 10.20 WIB.",
+      question: "Pukul berapa jam kegiatan belajar mengajar dimulai dan selesai?",
+      answer: "Kegiatan belajar dimulai pukul 07.45 hingga 10.20 WIB. Diawali dengan baris ceria, doa bersama, sholat dhuha berjamaah, dan kegiatan sentra.",
+      category: "Jadwal"
     },
     {
-      question:
-        "Bagaimana jika anak belum mandiri atau masih sering menangis ?",
-      answer:
-        "Guru akan membantu proses adaptasi anak secara bertahap agar merasa nyaman di lingkungan sekolah.",
+      question: "Bagaimana jika anak saya belum terbiasa berpisah atau sering menangis?",
+      answer: "Jangan khawatir Bunda, para guru kami sangat sabar dan berpengalaman dalam masa transisi/orientasi. Orang tua diizinkan mendampingi di minggu awal hingga anak merasa nyaman dan mandiri.",
+      category: "Pendampingan"
     },
     {
-      question: "Apakah ada pembelajaran mengaji dan hafalan doa ?",
-      answer:
-        "Ya, anak akan dikenalkan doa harian, surat-surat pendek, serta nilai-nilai Islami sesuai usia mereka.",
-    },
+      question: "Apakah ada pembelajaran mengaji, hafalan surat pendek & doa harian?",
+      answer: "Ya, betul sekali. Setiap hari anak dibiasakan berdoa sebelum dan sesudah aktivitas, mengenal huruf hijaiyah, hafalan surat-surat pendek Juz Amma, dan praktek ibadah sederhana.",
+      category: "Islami"
+    }
   ];
 
-  function loopingFaq() {
-    const containerFaq = document.querySelector(".container-faq");
+  const containerFaq = document.querySelector(".container-faq");
+  if (!containerFaq) return;
 
-    data.forEach((item) => {
-      const html = `<article
-            class="border-t-[1px] border-b-[1px] border-teal-700 py-2 px-1 transition-all duration-300 faq-item reveal"
-          >
-            <div class="flex justify-between">
-              <p class="text-base md:text-lg"> ${item.question} </p>
-              <img
-                src="asset/svg/chevron-down-svgrepo-com.svg"
-                alt=""
-                class="w-3 h-3 block self-center transition-all duration-300"
-              />
-            </div>
-            <p
-              class="text-base md:text-lg hidden opacity-0 transition-all duration-300"
-            >
-              ${item.answer}
-            </p>
-          </article>`;
+  containerFaq.innerHTML = "";
 
-      containerFaq.insertAdjacentHTML("beforeend", html);
-    });
-  }
+  faqData.forEach((item, index) => {
+    const html = `
+      <article class="faq-item bg-white rounded-2xl p-5 shadow-sm border border-amber-100 hover:border-amber-300 transition-all duration-300 cursor-pointer reveal">
+        <div class="faq-header flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 font-bold text-sm flex items-center justify-center shrink-0">
+              ${index + 1}
+            </span>
+            <h3 class="font-bold text-slate-800 text-base md:text-lg">
+              ${item.question}
+            </h3>
+          </div>
+          <div class="faq-icon w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300">
+            <svg class="w-3.5 h-3.5 text-slate-600" viewBox="0 0 512 512" fill="currentColor">
+              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="faq-answer hidden opacity-0 transition-all duration-300 mt-4 pt-4 border-t border-slate-100">
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed pl-11">
+            ${item.answer}
+          </p>
+        </div>
+      </article>
+    `;
+    containerFaq.insertAdjacentHTML("beforeend", html);
+  });
 
-  loopingFaq();
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach((item) => {
+    const header = item.querySelector(".faq-header");
+    const answer = item.querySelector(".faq-answer");
+    const icon = item.querySelector(".faq-icon");
 
-  function toggleFaq() {
-    const faqItem = document.querySelectorAll(".faq-item");
-    let lastClickedItem;
-    let clickCount = 1;
-    faqItem.forEach((item) => {
-      const pHiddden = item.querySelector("article > p");
-      pHiddden.classList.add("translate-y-3");
+    header.addEventListener("click", () => {
+      const isExpanded = !answer.classList.contains("hidden");
 
-      item.addEventListener("click", function (e) {
-        faqItem.forEach((item) => {
-          const pHiddden = item.querySelector("article > p");
-          const svg = item.querySelector("img");
-
-          const isOpen = pHiddden.classList.contains("hidden");
-          pHiddden.classList.add("translate-y-3");
-          if (!isOpen) {
-            pHiddden.classList.add("hidden");
-            pHiddden.classList.add("opacity-0");
-            svg.classList.remove("rotate-180");
-          }
-        });
-
-        const pHiddden = item.querySelector("article > p");
-        const svg = item.querySelector("img");
-
-        const isOpen = pHiddden.classList.contains("hidden");
-
-        if (isOpen) {
-          pHiddden.classList.remove("hidden");
-          requestAnimationFrame(() => {
-            pHiddden.classList.remove("opacity-0", "translate-y-3");
-            pHiddden.classList.add("opacity-100", "translate-y-0");
-          });
-          svg.classList.add("rotate-180");
-        } else {
-          pHiddden.classList.add("hidden");
-          pHiddden.classList.add("opacity-0");
-          svg.classList.remove("rotate-180");
-        }
-
-        if (lastClickedItem === this && !(clickCount === 2)) {
-          pHiddden.classList.add("hidden");
-          pHiddden.classList.add("opacity-0");
-          svg.classList.remove("rotate-180");
-          clickCount += 1;
-        } else {
-          lastClickedItem = this;
-          clickCount = 1;
+      // Close other items
+      faqItems.forEach((other) => {
+        const otherAnswer = other.querySelector(".faq-answer");
+        const otherIcon = other.querySelector(".faq-icon");
+        if (otherAnswer && other !== item) {
+          otherAnswer.classList.add("hidden", "opacity-0");
+          otherAnswer.classList.remove("opacity-100");
+          if (otherIcon) otherIcon.classList.remove("rotate-180", "bg-amber-100", "text-amber-600");
         }
       });
-    });
-  }
 
-  toggleFaq();
+      // Toggle current
+      if (isExpanded) {
+        answer.classList.add("hidden", "opacity-0");
+        answer.classList.remove("opacity-100");
+        icon.classList.remove("rotate-180", "bg-amber-100", "text-amber-600");
+      } else {
+        answer.classList.remove("hidden");
+        requestAnimationFrame(() => {
+          answer.classList.remove("opacity-0");
+          answer.classList.add("opacity-100");
+        });
+        icon.classList.add("rotate-180", "bg-amber-100", "text-amber-600");
+      }
+    });
+  });
 };
 
-faqLogic();
-
+// 6. Contact Form WhatsApp Logic
 const contactLogic = () => {
-  function sendMessage() {
-    const inputTextEl = document.querySelector(
-      '#contact-form input[type="text"]',
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.querySelector('input[placeholder*="Nama"]')?.value || "";
+    const childName = form.querySelector('input[placeholder*="Anak"]')?.value || "";
+    const phone = form.querySelector('input[type="tel"]')?.value || "";
+    const message = form.querySelector('textarea')?.value || "";
+
+    const fullMessage = `Halo Bunda Guru TK PAUD Permata,\n\nSaya ingin bertanya mengenai pendaftaran / informasi sekolah:\n\n*Nama Orang Tua:* ${name}\n*Nama Anak:* ${childName || '-'}\n*No. Telepon / WA:* ${phone}\n*Pesan / Pertanyaan:* ${message}\n\nTerima kasih Bunda! 🙏`;
+
+    window.open(
+      `https://wa.me/6285692590096?text=${encodeURIComponent(fullMessage)}`,
+      "_blank"
     );
-    const inputGmailEl = document.querySelector(
-      '#contact-form input[type="email"]',
-    );
-    const inputNoTlpEl = document.querySelector(
-      '#contact-form input[type="tel"]',
-    );
-    const textAreaEl = document.querySelector("#contact-form textarea");
-    const btnSendEl = document.querySelector("#contact-form button");
-
-    btnSendEl.addEventListener("click", () => {
-      const message = `
-Nama   : ${inputTextEl.value}
-Gmail  : ${inputGmailEl.value}
-No Tlp : ${inputNoTlpEl.value}
-
-Pesan  : ${textAreaEl.value}
-      `;
-
-      window.open(
-        `https://wa.me/6285692590096?text=${encodeURIComponent(message)}`,
-        "_blank",
-      );
-    });
-  }
-
-  sendMessage();
+  });
 };
 
-contactLogic();
-
-const infoLanjutLogic = () => {
-  const data = [
+// 7. Gallery Carousel / Video Track Logic
+const galleryTrackLogic = () => {
+  const galleryData = [
     {
-      vidio: "asset/video/info-lanjut/cooking-time.mp4",
-      Image: "asset/img/info-lanjut/solat.avif",
+      video: "asset/video/info-lanjut/cooking-time.mp4",
+      image: "asset/img/info-lanjut/solat.avif",
+      title: "Praktik Sholat & Doa",
+      category: "Islami"
     },
     {
-      vidio: "asset/video/info-lanjut/kerja-bakti.mp4",
-      Image: "asset/img/info-lanjut/mencuci-piring.avif",
+      video: "asset/video/info-lanjut/kerja-bakti.mp4",
+      image: "asset/img/info-lanjut/mencuci-piring.avif",
+      title: "Kemandirian & Kebersihan",
+      category: "Life Skill"
     },
     {
-      vidio: "asset/video/info-lanjut/menanam.mp4",
-      Image: "asset/img/info-lanjut/membuat-bunga.avif",
+      video: "asset/video/info-lanjut/menanam.mp4",
+      image: "asset/img/info-lanjut/membuat-bunga.avif",
+      title: "Menanam & Cinta Alam",
+      category: "Eksplorasi"
     },
     {
-      vidio: "asset/video/info-lanjut/qomat.mp4",
-      Image: "asset/img/info-lanjut/membuat-aci.avif",
+      video: "asset/video/info-lanjut/qomat.mp4",
+      image: "asset/img/info-lanjut/membuat-aci.avif",
+      title: "Kreasi Melipat & Menempel",
+      category: "Kreativitas"
     },
     {
-      vidio: "asset/video/info-lanjut/wadang.mp4",
-      Image: "asset/img/info-lanjut/foto-bersama.avif",
+      video: "asset/video/info-lanjut/wadang.mp4",
+      image: "asset/img/info-lanjut/foto-bersama.avif",
+      title: "Keceriaan Bersama Guru",
+      category: "Sosialisasi"
     },
     {
-      vidio: "asset/video/info-lanjut/market-day.mp4",
-      Image: "asset/img/info-lanjut/wisuda.avif",
+      video: "asset/video/info-lanjut/market-day.mp4",
+      image: "asset/img/info-lanjut/wisuda.avif",
+      title: "Market Day & Kewirausahaan",
+      category: "Pentas & Karakter"
     },
     {
-      vidio: "asset/video/info-lanjut/membuat-telor-asin.mp4",
-      Image: "asset/img/info-lanjut/juara-mewarnai.avif",
+      video: "asset/video/info-lanjut/membuat-telor-asin.mp4",
+      image: "asset/img/info-lanjut/juara-mewarnai.avif",
+      title: "Juara Lomba Mewarnai",
+      category: "Prestasi"
     },
     {
-      vidio: "asset/video/info-lanjut/membuat-playdoh.mp4",
-      Image: "asset/img/info-lanjut/lomba-gambar.avif",
+      video: "asset/video/info-lanjut/membuat-playdoh.mp4",
+      image: "asset/img/info-lanjut/lomba-gambar.avif",
+      title: "Sensori Play & Playdough",
+      category: "Motorik Halus"
     },
     {
-      vidio: "asset/video/info-lanjut/membuat-tempat-pensil.mp4",
-      Image: "asset/img/info-lanjut/menggambar.avif",
-    },
+      video: "asset/video/info-lanjut/membuat-tempat-pensil.mp4",
+      image: "asset/img/info-lanjut/menggambar.avif",
+      title: "Menggambar Bebas",
+      category: "Seni Rupa"
+    }
   ];
 
   const track = document.querySelector(".track");
+  if (!track) return;
 
-  function loopingTrack() {
-    data.forEach((item) => {
+  track.innerHTML = "";
+
+  const createItems = () => {
+    galleryData.forEach((item) => {
       const html = `
-              <div
-                class="w-28 md:w-36 lg:w-50 aspect-[9/16] rounded-xl overflow-hidden shrink-0"
-              >
-                <video autoplay muted loop
-                  src="${item.vidio}"
-                  class="w-full h-full object-cover"
-                ></video>
-              </div>
-
-              <!-- Foto -->
-              <div
-                class="w-28 md:w-30 lg:w-46 aspect-[3/4] rounded-xl overflow-hidden shrink-0 self-center"
-              >
-                <img
-                  src="${item.Image}"
-                  class="w-full h-full object-cover"
-                />
-              </div>`;
-
+        <div class="gallery-card shrink-0 w-64 md:w-72 bg-white rounded-3xl p-3 shadow-md border border-amber-100 flex flex-col gap-3 group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-amber-50">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <source src="${item.video}" type="video/mp4">
+            </video>
+            <span class="absolute top-2.5 left-2.5 bg-amber-500/90 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-full">
+              ${item.category}
+            </span>
+          </div>
+          <div class="relative w-full aspect-[16/9] rounded-2xl overflow-hidden">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          </div>
+          <div class="px-1 pb-1">
+            <h4 class="font-bold text-slate-800 text-sm md:text-base">${item.title}</h4>
+          </div>
+        </div>
+      `;
       track.insertAdjacentHTML("beforeend", html);
     });
-  }
+  };
 
-  loopingTrack();
-  loopingTrack();
-  let x = 0;
+  createItems();
+  createItems(); // Duplicate for smooth infinite loop
 
-  function animate() {
-    if (innerWidth <= 500) x -= 0.3;
-    else if (innerWidth >= 500 && innerWidth <= 1020) x -= 0.5;
-    else x -= 1;
+  let scrollPosition = 0;
+  let isHovered = false;
 
-    if (Math.abs(x) >= track.scrollWidth / 2) {
-      x = 0;
+  track.addEventListener("mouseenter", () => isHovered = true);
+  track.addEventListener("mouseleave", () => isHovered = false);
+
+  function autoScroll() {
+    if (!isHovered) {
+      scrollPosition += window.innerWidth < 768 ? 0.6 : 0.8;
+      if (scrollPosition >= track.scrollWidth / 2) {
+        scrollPosition = 0;
+      }
+      track.style.transform = `translateX(-${scrollPosition}px)`;
     }
-
-    track.style.transform = `translateX(${x}px)`;
-
-    requestAnimationFrame(animate);
+    requestAnimationFrame(autoScroll);
   }
 
-  animate();
+  autoScroll();
+};
 
-  function scrollDownload() {
-    const videos = track.querySelectorAll("video");
+// 8. Purposeful Staggered Reveal on Scroll Animation
+const revealOnScrollLogic = () => {
+  const elements = document.querySelectorAll(".reveal");
+  if (elements.length === 0) return;
 
-    const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
-        const video = entry.target;
-
         if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
         }
       });
-    });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+  );
 
-    videos.forEach((video) => observer.observe(video));
-  }
-
-  scrollDownload();
+  elements.forEach((el) => {
+    if (el.parentElement && el.parentElement.children.length > 1) {
+      const siblingIndex = Array.from(el.parentElement.children).indexOf(el);
+      if (siblingIndex > 0 && siblingIndex < 6) {
+        el.style.transitionDelay = `${siblingIndex * 60}ms`;
+      }
+    }
+    observer.observe(el);
+  });
 };
 
-infoLanjutLogic();
-
-const animasiScrollLogic = () => {
-  function animasiScrollSectionAndH() {
-    const containers = document.querySelectorAll(".reveal");
-
-    containers.forEach((el, i) => {
-      el.classList.add(
-        "opacity-0",
-        "translate-y-3",
-        "transition-all",
-        "duration-700",
-      );
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-3");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      },
-    );
-
-    containers.forEach((el) => observer.observe(el));
-  }
-
-  animasiScrollSectionAndH();
-
-  function animasiScrollParaghrap() {
-    const containers = document.querySelectorAll(".reveal-paraghrap");
-
-    containers.forEach((el, i) => {
-      el.classList.add(
-        "opacity-0",
-        "translate-y-3",
-        "transition-all",
-        "duration-700",
-      );
-
-      el.style.transitionDelay = `${i * 120}ms`;
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-3");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      },
-    );
-
-    containers.forEach((el) => observer.observe(el));
-  }
-
-  animasiScrollParaghrap();
-};
-
-animasiScrollLogic();
+// Initialize all modules on DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  headerLogic();
+  mobileMenuLogic();
+  aboutStatsLogic();
+  programAccordionLogic();
+  faqLogic();
+  contactLogic();
+  galleryTrackLogic();
+  revealOnScrollLogic();
+});

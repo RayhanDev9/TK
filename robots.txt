@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /*.temp.mp4$
+Disallow: /node_modules/
+
+Sitemap: https://permatabelajar.my.id/sitemap.xml
