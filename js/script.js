@@ -1,19 +1,43 @@
 // TK PAUD Permata - Interactive Script
 
-// 1. Header Sticky & Scroll Shadow Logic
+// 1. Header Hide-on-Scroll-Down / Show-on-Scroll-Up Logic
 const headerLogic = () => {
   const navbar = document.querySelector("header");
   if (!navbar) return;
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) {
-      navbar.classList.add("bg-white/95", "shadow-md", "backdrop-blur-md", "py-3");
-      navbar.classList.remove("py-5", "bg-transparent");
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  const updateNavbar = () => {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+
+    // Add shadow & glass effect when not at top
+    if (currentScrollY > 60) {
+      navbar.classList.add("shadow-md");
     } else {
-      navbar.classList.remove("bg-white/95", "shadow-md", "backdrop-blur-md", "py-3");
-      navbar.classList.add("py-5", "bg-transparent");
+      navbar.classList.remove("shadow-md");
     }
-  });
+
+    // Hide when scrolling DOWN (past initial 80px to avoid hiding immediately)
+    if (scrollDelta > 0 && currentScrollY > 80) {
+      navbar.style.transform = "translateY(-110%)";
+    }
+    // Show when scrolling UP
+    else if (scrollDelta < 0) {
+      navbar.style.transform = "translateY(0)";
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateNavbar);
+      ticking = true;
+    }
+  }, { passive: true });
 };
 
 // 2. Mobile Menu Toggle Logic
@@ -154,24 +178,24 @@ const faqLogic = () => {
 
   faqData.forEach((item, index) => {
     const html = `
-      <article class="faq-item bg-white rounded-2xl p-5 shadow-sm border border-amber-100 hover:border-amber-300 transition-all duration-300 cursor-pointer reveal">
+      <article class="faq-item bg-white rounded-[22px] p-5 shadow-sm border-2 border-[#DDF2FF] hover:border-[#3B9FE8] transition-all duration-300 cursor-pointer reveal">
         <div class="faq-header flex items-center justify-between gap-4">
           <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 font-bold text-sm flex items-center justify-center shrink-0">
+            <span class="w-8 h-8 rounded-full bg-[#DDF2FF] text-[#155A9C] font-bold text-sm flex items-center justify-center shrink-0 font-fredoka">
               ${index + 1}
             </span>
-            <h3 class="font-bold text-slate-800 text-base md:text-lg">
+            <h3 class="font-bold text-[#155A9C] text-base md:text-lg font-fredoka">
               ${item.question}
             </h3>
           </div>
-          <div class="faq-icon w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300">
-            <svg class="w-3.5 h-3.5 text-slate-600" viewBox="0 0 512 512" fill="currentColor">
+          <div class="faq-icon w-8 h-8 rounded-full bg-[#F3FAFF] text-[#3B9FE8] flex items-center justify-center shrink-0 transition-transform duration-300">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 512 512">
               <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
             </svg>
           </div>
         </div>
-        <div class="faq-answer hidden opacity-0 transition-all duration-300 mt-4 pt-4 border-t border-slate-100">
-          <p class="text-slate-600 text-sm md:text-base leading-relaxed pl-11">
+        <div class="faq-answer hidden opacity-0 transition-all duration-300 mt-4 pt-4 border-t border-[#DDF2FF]">
+          <p class="text-[#26364A]/80 text-sm md:text-base leading-relaxed pl-11">
             ${item.answer}
           </p>
         </div>
@@ -196,7 +220,7 @@ const faqLogic = () => {
         if (otherAnswer && other !== item) {
           otherAnswer.classList.add("hidden", "opacity-0");
           otherAnswer.classList.remove("opacity-100");
-          if (otherIcon) otherIcon.classList.remove("rotate-180", "bg-amber-100", "text-amber-600");
+          if (otherIcon) otherIcon.classList.remove("rotate-180", "bg-[#DDF2FF]", "text-[#155A9C]");
         }
       });
 
@@ -204,14 +228,14 @@ const faqLogic = () => {
       if (isExpanded) {
         answer.classList.add("hidden", "opacity-0");
         answer.classList.remove("opacity-100");
-        icon.classList.remove("rotate-180", "bg-amber-100", "text-amber-600");
+        icon.classList.remove("rotate-180", "bg-[#DDF2FF]", "text-[#155A9C]");
       } else {
         answer.classList.remove("hidden");
         requestAnimationFrame(() => {
           answer.classList.remove("opacity-0");
           answer.classList.add("opacity-100");
         });
-        icon.classList.add("rotate-180", "bg-amber-100", "text-amber-600");
+        icon.classList.add("rotate-180", "bg-[#DDF2FF]", "text-[#155A9C]");
       }
     });
   });
@@ -305,12 +329,12 @@ const galleryTrackLogic = () => {
   const createItems = () => {
     galleryData.forEach((item) => {
       const html = `
-        <div class="gallery-card shrink-0 w-64 md:w-72 bg-white rounded-3xl p-3 shadow-md border border-amber-100 flex flex-col gap-3 group hover:shadow-xl transition-all duration-300">
-          <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-amber-50">
+        <div class="gallery-card shrink-0 w-64 md:w-72 bg-white rounded-[24px] p-3.5 shadow-sm hover:shadow-xl border-2 border-[#DDF2FF] hover:border-[#3B9FE8] flex flex-col gap-3 group transition-all duration-300">
+          <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#DDF2FF]">
             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <source src="${item.video}" type="video/mp4">
             </video>
-            <span class="absolute top-2.5 left-2.5 bg-amber-500/90 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            <span class="absolute top-2.5 left-2.5 bg-[#155A9C]/90 backdrop-blur-xs text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-xs">
               ${item.category}
             </span>
           </div>
@@ -318,7 +342,7 @@ const galleryTrackLogic = () => {
             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
           </div>
           <div class="px-1 pb-1">
-            <h4 class="font-bold text-slate-800 text-sm md:text-base">${item.title}</h4>
+            <h4 class="font-bold font-fredoka text-[#155A9C] text-sm md:text-base">${item.title}</h4>
           </div>
         </div>
       `;
@@ -377,6 +401,68 @@ const revealOnScrollLogic = () => {
   });
 };
 
+// 9. Active Nav Section Highlighter (IntersectionObserver)
+const activeNavLogic = () => {
+  // Collect all desktop nav links that point to page sections (href starts with #)
+  const navLinks = document.querySelectorAll("header nav a[href^='#']");
+  if (navLinks.length === 0) return;
+
+  // Build a map: sectionId -> navLink element
+  const linkMap = {};
+  navLinks.forEach((link) => {
+    const id = link.getAttribute("href").replace("#", "");
+    linkMap[id] = link;
+  });
+
+  const sectionIds = Object.keys(linkMap);
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  if (sections.length === 0) return;
+
+  // Active style classes applied to the link
+  const ACTIVE_CLASSES = [
+    "bg-[#DDF2FF]",
+    "!text-[#155A9C]",
+    "rounded-full",
+    "px-3.5",
+    "font-extrabold",
+  ];
+
+  let activeId = null;
+
+  const setActive = (id) => {
+    if (activeId === id) return;
+    // Remove from old
+    if (activeId && linkMap[activeId]) {
+      linkMap[activeId].classList.remove(...ACTIVE_CLASSES);
+    }
+    // Apply to new
+    activeId = id;
+    if (id && linkMap[id]) {
+      linkMap[id].classList.add(...ACTIVE_CLASSES);
+    }
+  };
+
+  // Use rootMargin so activation happens when section is near center of viewport
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    },
+    {
+      threshold: 0,
+      rootMargin: "-40% 0px -50% 0px",
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+};
+
 // Initialize all modules on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   headerLogic();
@@ -387,4 +473,5 @@ document.addEventListener("DOMContentLoaded", () => {
   contactLogic();
   galleryTrackLogic();
   revealOnScrollLogic();
+  activeNavLogic();
 });

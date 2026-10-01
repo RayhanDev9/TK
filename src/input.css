@@ -1,63 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..900;1,300..900&family=Quicksand:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,300..900;1,300..900&family=Quicksand:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-heading: 'Quicksand', sans-serif;
+  --font-heading: 'Fredoka', 'Quicksand', sans-serif;
   --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   --breakpoint-xs: 30rem;
 
-  --color-warm-bg: #FFFDF7;
-  --color-sky-soft: #F0F9FF;
-  --color-mint-soft: #F0FDF4;
-  --color-yellow-soft: #FEFCE8;
-  --color-coral-soft: #FFF1F2;
-  --color-purple-soft: #FAF5FF;
-
-  --color-primary-amber: #F59E0B;
-  --color-primary-orange: #EA580C;
-  --color-brand-blue: #0284C7;
-  --color-brand-green: #10B981;
-  --color-brand-pink: #EC4899;
-  --color-brand-purple: #8B5CF6;
+  --color-primary-blue: #3B9FE8;
+  --color-deep-blue: #155A9C;
+  --color-sky-blue: #DDF2FF;
+  --color-pale-blue: #F3FAFF;
+  --color-mint-islami: #68D2B0;
+  --color-kuning-ceria: #FFD76A;
+  --color-peach-hangat: #FFB18C;
+  --color-text-dark: #26364A;
 }
 
-/* Subtle, Purposeful Keyframes */
+:root {
+  --color-primary-blue: #3B9FE8;
+  --color-deep-blue: #155A9C;
+  --color-sky-blue: #DDF2FF;
+  --color-pale-blue: #F3FAFF;
+  --color-mint-islami: #68D2B0;
+  --color-kuning-ceria: #FFD76A;
+  --color-peach-hangat: #FFB18C;
+  --color-text-dark: #26364A;
+}
+
+/* Subtle, Child-Friendly Keyframe Animations */
 @keyframes float-soft {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-6px) rotate(1deg);
   }
 }
 
 @keyframes float-soft-reverse {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(6px);
-  }
-}
-
-@keyframes pulse-soft {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.35);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.5);
+    transform: translateY(6px) rotate(-1deg);
   }
 }
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.35);
+    box-shadow: 0 0 0 0 rgba(59, 159, 232, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(234, 88, 12, 0);
+    box-shadow: 0 0 20px 6px rgba(59, 159, 232, 0.2);
   }
 }
 
@@ -74,14 +69,22 @@
 
 /* Base styling */
 html {
-  font-family: var(--font-sans);
-  background-color: var(--color-warm-bg);
-  color: #1e293b;
+  font-family: 'Nunito', sans-serif;
+  background-color: #F3FAFF;
+  color: #26364A;
   scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: 'Fredoka', 'Quicksand', sans-serif;
+}
+
+.font-fredoka {
+  font-family: 'Fredoka', 'Quicksand', sans-serif;
+}
+
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
 }
 
 /* Purposeful Utility Animation Classes */
@@ -89,16 +92,16 @@ h1, h2, h3, h4, h5, h6 {
   animation: float-soft 4s ease-in-out infinite;
 }
 
+.animate-float-slow {
+  animation: float-soft 4s ease-in-out infinite;
+}
+
 .animate-float-reverse {
   animation: float-soft-reverse 4.5s ease-in-out infinite;
 }
 
-.animate-pulse-soft {
-  animation: pulse-soft 3s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2.5s ease-out infinite;
+.animate-glow {
+  animation: pulse-glow 2.5s infinite;
 }
 
 .animate-growWidth {
@@ -125,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-press:active {
-  transform: scale(0.97) translateY(0);
+  transform: scale(0.96) translateY(0);
 }
 
 .img-zoom-container {
@@ -174,17 +177,17 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 0;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Biru Ceria Theme */
 ::-webkit-scrollbar {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFFDF7;
+  background: #F3FAFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #FCD34D;
+  background: #3B9FE8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #F59E0B;
+  background: #155A9C;
 }

@@ -91,12 +91,12 @@ const vidioLoad = () => {
 
     <div class="absolute z-20 bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 flex justify-between items-center lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 
-      <button id="play-pause-btn" class="text-white hover:text-amber-400 focus:outline-none transition-colors cursor-pointer btn-press">
+      <button id="play-pause-btn" class="text-white hover:text-[#FFD76A] focus:outline-none transition-colors cursor-pointer btn-press" aria-label="Play atau Pause Video">
         <svg id="icon-play" class="w-7 h-7 text-white" viewBox="0 0 384 512" fill="currentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
         <svg id="icon-pause" class="w-7 h-7 text-white hidden" viewBox="0 0 320 512" fill="currentColor"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>
       </button>
 
-      <button id="fullscreen-btn" class="text-white hover:text-amber-400 focus:outline-none transition-colors cursor-pointer btn-press">
+      <button id="fullscreen-btn" class="text-white hover:text-[#FFD76A] focus:outline-none transition-colors cursor-pointer btn-press" aria-label="Layar Penuh">
         <svg class="w-6 h-6 text-white" viewBox="0 0 448 512" fill="currentColor"><path d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V384c0-17.7-14.3-32-32-32zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zm96 320c-17.7 0-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V384c0-17.7-14.3-32-32-32z"/></svg>
       </button>
     </div>
@@ -289,7 +289,7 @@ const imgLoade = () => {
   let galleryHTML = "";
   imageUrls.forEach((url, index) => {
     galleryHTML += `
-      <div class="overflow-hidden bg-white rounded-2xl shadow-md border border-amber-100 cursor-pointer group hover:shadow-xl transition-all duration-300">
+      <div class="overflow-hidden bg-white rounded-2xl shadow-md border border-[#DDF2FF] hover:border-[#3B9FE8] cursor-pointer group hover:shadow-xl transition-all duration-300">
         <img 
           src="${url}" 
           alt="Dokumentasi Seru Kegiatan MPLS TK PAUD Permata Tigaraksa Foto ${index + 1}" 

@@ -15,6 +15,7 @@
 7. [Pilar 5: Optimasi Media, Kecepatan & Core Web Vitals](#7-pilar-5-optimasi-media-kecepatan--core-web-vitals)
 8. [Pilar 6: Social Media Preview & Open Graph](#8-pilar-6-social-media-preview--open-graph)
 9. [Roadmap & Checklist Implementasi Bertahap](#9-roadmap--checklist-implementasi-bertahap)
+10. [Rekomendasi & Solusi Desain UI/UX: Penyederhanaan Navbar](#10-rekomendasi--solusi-desain-uiux-penyederhanaan-navbar-streamlining-navigation)
 
 ---
 
@@ -282,3 +283,79 @@ graph TD
 
 ---
 *Dokumen Master Plan SEO ini disusun untuk mendukung pertumbuhan dan eksistensi digital TK PAUD Permata Tigaraksa.*
+
+---
+
+## 10. Rekomendasi & Solusi Desain UI/UX: Penyederhanaan Navbar (Streamlining Navigation)
+
+### 🧐 Analisis Masalah: Mengapa Navbar Terlalu Ramai?
+Berdasarkan tinjauan visual pada layar desktop (khususnya resolusi laptop 1024px – 1366px):
+1. **Beban Kognitif Berlebih (Hick's Law):**
+   Saat ini terdapat **11 elemen aktif** sekaligus di satu baris header:
+   `Logo` + 8 Tautan Teks (`Beranda`, `Keunggulan`, `Tentang Kami`, `Program`, `Bunda Guru`, `Fasilitas`, `Galeri`, `Testimoni`) + 1 Badge Spesial (`MPLS`) + 2 Tombol Aksi (`Brosur PDF` & `Daftar PPDB`).
+2. **Kepadatan Ruang (Visual Clutter):**
+   Jarak antar menu sangat sempit sehingga website terlihat padat, kaku, dan kurang lega (*breathing room* berkurang).
+3. **Kompetisi Tombol Aksi (Dual Action Buttons):**
+   Tombol `Brosur PDF` dan `Daftar PPDB` sama-sama besar dan menonjol di sebelah kanan, sehingga perhatian calon wali murid terpecah alih-alih langsung fokus mendaftar PPDB.
+
+---
+
+### 💡 3 Pilihan Solusi Perampingan Navbar
+
+Berikut 3 alternatif strategi perampingan yang dapat dipilih:
+
+#### 🏆 OPSI 1: 4–5 Menu Inti + 1 Primary CTA (Sangat Direkomendasikan)
+Menyaring hanya menu-menu yang paling krusial bagi orang tua murid baru, sementara detail pendukung lainnya tetap dapat dinikmati saat digulir ke bawah (*natural page scroll*):
+
+| Posisi | Elemen | Tautan Target | Keterangan & Tujuan |
+| :--- | :--- | :--- | :--- |
+| **Kiri** | **Logo TK PAUD Permata** | `#home` | Logo + Identitas Tigaraksa Tangerang |
+| **Tengah** | 1. `Beranda` | `#home` | Halaman / banner utama |
+| | 2. `Tentang Kami` | `#about` | Mengenal profil sekolah, visi misi & keunggulan |
+| | 3. `Program Belajar` | `#program` | Kelompok usia: KB (Playgroup), TK A, TK B |
+| | 4. `Fasilitas & Galeri` | `#fasilitas` | Foto suasana ruang kelas, area bermain & aktivitas |
+| | 5. `MPLS` (Badge Kuning) | `html/mpls.html` | Dokumentasi Masa Pengenalan Lingkungan Sekolah |
+| **Kanan** | **Daftar PPDB** (Tombol Utama) | `#contact` | 1 Tombol fokus konversi tinggi |
+
+> **📌 Penempatan Brosur PDF pada Opsi 1:**
+> Tombol `Brosur PDF` dipindahkan ke **Hero Section** (tepat di bawah judul utama bersanding dengan tombol *Daftar Sekarang*) serta di **Footer**. Dengan demikian, navbar menjadi sangat bersih, lega, dan elegan.
+
+---
+
+#### 📂 OPSI 2: Sistem Dropdown Menu (Organisasi Kategori Hierarkis)
+Jika seluruh tautan tetap ingin dapat diakses langsung dari header tanpa scrolling panjang, gunakan dropdown hover:
+1. `Beranda` (`#home`)
+2. `Profil Sekolah ▾`
+   - *Tentang Kami* (`#about`)
+   - *Keunggulan (4 Pilar)* (`#keunggulan`)
+   - *Bunda Guru Pengajar* (`#guru`)
+3. `Akademik & Fasilitas ▾`
+   - *Program Belajar (KB & TK)* (`#program`)
+   - *Fasilitas Sekolah* (`#fasilitas`)
+   - *Galeri Keceriaan* (`#gallery`)
+   - *Testimoni Wali Murid* (`#testimoni`)
+4. `MPLS` (Badge Kuning Vektor Balon)
+5. `Daftar PPDB` (Tombol Utama Biru)
+
+*Kelebihan:* Jumlah item di navbar menyusut dari 11 menjadi hanya 5 item, namun seluruh tautan tetap terjangkau dalam 1 kali klik.
+
+---
+
+#### ⚡ OPSI 3: Minimalis Modern (High Conversion Landing Page)
+Dirancang khusus untuk kampanye PPDB dengan mengarahkan orang tua langsung ke poin keputusan terpenting:
+- Menu: `Profil` (`#about`) • `Program` (`#program`) • `Galeri` (`#gallery`) • `MPLS`
+- CTA: `Daftar PPDB 2026/2027` (`#contact`)
+- *FAQ, Guru, Fasilitas, dan Testimoni dinikmati sebagai bagian dari alur scrolling halaman.*
+
+---
+
+### 📊 Tabel Perbandingan: Sebelum vs Sesudah (Opsi 1)
+
+| Aspek Evaluasi | Kondisi Saat Ini (11 Elemen) | Rekomendasi Opsi 1 (5 Elemen + 1 CTA) |
+| :--- | :--- | :--- |
+| **Total Elemen Header** | 8 Tautan + 1 Badge + 2 Tombol | 4 Tautan + 1 Badge + 1 Tombol Utama |
+| **Tampilan di Laptop (1366px)** | Sesak, jarak rapat, teks menempel tombol | Sangat lega, luas, dan berkelas profesional |
+| **Fokus Calon Wali Murid** | Bingung memilih antara Brosur vs Daftar PPDB | 100% tertuju pada aksi pendaftaran PPDB |
+| **Aksesibilitas Mobile Drawer** | Daftar menu drawer panjang ke bawah | Ringkas, cepat di-tap, dan mudah dipahami |
+| **Kecepatan Browsing** | Calon murid disajikan terlalu banyak pilihan | Navigasi terarah dan ramah orang tua murid |
+
